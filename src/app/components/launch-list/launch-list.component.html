@@ -1,0 +1,39 @@
+<main>
+  <input class="form-control" type="text" placeholder="Search" [(ngModel)]="searchText">
+  <div *ngIf="loading">
+    Loading ....
+  </div>
+  <div *ngIf="error">
+    Error
+  </div>
+  <div hidden>
+    {{launches[0].id}}
+  </div>
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Mission name</th>
+        <th>Rocket name</th>
+        <th>Date</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let launch of launches | search: searchText">
+        <td>{{launch.id}}</td>
+        <td>{{launch.mission_name}}</td>
+        <td>{{launch.rocket.rocket_name}}</td>
+        <td>{{launch.launch_date_utc}}</td>
+
+
+
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+</main>
